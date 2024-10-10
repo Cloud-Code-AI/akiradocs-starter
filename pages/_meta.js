@@ -1,3 +1,3 @@
 export default {
-    index: 'My Homepage',
-}
+  "index": "Akira Test",
+};

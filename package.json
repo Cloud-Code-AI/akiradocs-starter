@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "Akira docs starter template",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "generate-meta": "node scripts/generate-meta.cjs",
+    "dev": "npm run generate-meta && next dev",
+    "build": "npm run generate-meta && next build"
   },
   "repository": {
     "type": "git",
