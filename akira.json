@@ -1,0 +1,13 @@
+{
+  "sidebar": [
+    {
+      "title": "Getting Started",
+      "pages": ["introduction", "installation"]
+    },
+    {
+      "title": "Advanced",
+      "pages": ["configuration", "deployment"]
+    },
+    "changelog"
+  ]
+}
