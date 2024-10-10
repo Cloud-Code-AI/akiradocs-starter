@@ -1,23 +1,46 @@
-# Nextra Docs Template 
+# Akira Docs Starter
 
-This is a template for creating documentation with [Nextra](https://nextra.site).
+Akira is a modern, customizable documentation template built on top of [Nextra](https://nextra.site). It's designed to help you create beautiful, functional, and easy-to-maintain documentation for your projects.
 
-[**Live Demo →**](https://nextra-docs-template.vercel.app)
+## Features
 
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
+- 🚀 **Quick Setup**: Get your documentation site up and running in minutes.
+- 🎨 **Highly Customizable**: Easy configuration through `akira.json`.
+- 🌙 **Dark Mode**: Built-in dark mode for late-night documentation sessions.
+- 🔍 **Full-Text Search**: Help your users find what they need quickly.
+- 📱 **Responsive Design**: Looks great on desktop, tablet, and mobile.
+- ⚡ **Fast & SEO Friendly**: Powered by Next.js for optimal performance.
 
 ## Quick Start
 
-Click the button to clone this repository and deploy it on Vercel:
-
-[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false)
+To get started with Akira, you can use the button below to clone this repository and deploy it.
 
 ## Local Development
 
-First, run `pnpm i` to install the dependencies.
+To run Akira locally:
 
-Then, run `pnpm dev` to start the development server and visit localhost:3000.
+1. Clone this repository:
+   ```
+   git clone https://github.com/Cloud-Code-AI/akiradocs-starter.git
+   ```
+2. Navigate to the project directory:
+   ```
+   cd akiradocs-starter
+   ```
+3. Install the dependencies:
+   ```
+   pnpm install
+   ```
+4. Start the development server:
+   ```
+   pnpm dev
+   ```
+5. Visit `http://localhost:3000` in your browser to see your documentation site.
 
-## License
+## Customization
 
-This project is licensed under the MIT License.
+Akira is designed to be easily customizable. Most settings can be adjusted in the `akira.json` file. For more detailed customization options, check out our [configuration guide](./docs/configuration.md).
+
+## Acknowledgements
+
+Akira is built on top of [Nextra](https://nextra.site), a powerful site generation framework. We're grateful to the Nextra team and all its contributors.
