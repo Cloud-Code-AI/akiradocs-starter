@@ -2,38 +2,52 @@ const fs = require('fs');
 const path = require('path');
 
 function generateMetaContent(items, indent = 2) {
-    let metaContent = '';
-    const spaces = ' '.repeat(indent);
-
+    let content = '{\n';
     for (const [key, value] of Object.entries(items)) {
-    if (typeof value === 'string') {
-        metaContent += `${spaces}"${key}": "${value}",\n`;
-    } else if (typeof value === 'object') {
-        metaContent += `${spaces}"${key}": {\n`;
-        metaContent += `${spaces}  "title": "${value.title}",\n`;
-        metaContent += `${spaces}  "type": "menu",\n`;
-        metaContent += `${spaces}  "items": {\n`;
-        metaContent += generateMetaContent(value.pages, indent + 4);
-        metaContent += `${spaces}  }\n`;
-        metaContent += `${spaces}},\n`;
+        if (typeof value === 'string') {
+            content += `${' '.repeat(indent)}"${key}": "${value}",\n`;
+        } else if (typeof value === 'object' && value.title) {
+            content += `${' '.repeat(indent)}"${key}": "${value.title}",\n`;
+        }
     }
-    }
-
-    return metaContent;
+    content += '}';
+    return content;
 }
 
 function generateMeta(config) {
-    let metaContent = 'export default {\n';
-    metaContent += generateMetaContent(config.sidebar);
-    metaContent += '};\n';
-    return metaContent;
+    const metaContent = generateMetaContent(config);
+    return `export default ${metaContent};`;
+}
+
+function createMetaFiles(mapping, basePath) {
+    for (const [key, value] of Object.entries(mapping)) {
+        if (typeof value === 'object' && value.type === 'menu' && value.pages) {
+            const dirPath = path.join(basePath, key);
+            if (!fs.existsSync(dirPath)) {
+                fs.mkdirSync(dirPath, { recursive: true });
+            }
+
+            const metaContent = generateMeta(value.pages);
+            const metaPath = path.join(dirPath, '_meta.js');
+            fs.writeFileSync(metaPath, metaContent);
+            console.log(`_meta.js has been generated for ${dirPath}`);
+
+            // Recursively create meta files for subpages
+            createMetaFiles(value.pages, dirPath);
+        }
+    }
 }
 
 const akiraConfigPath = path.join(__dirname, '..', 'akira.json');
-const metaOutputPath = path.join(__dirname, '..', 'pages', '_meta.js');
+const pagesPath = path.join(__dirname, '..', 'pages');
 
 const akiraConfig = JSON.parse(fs.readFileSync(akiraConfigPath, 'utf8'));
-const metaContent = generateMeta(akiraConfig);
 
-fs.writeFileSync(metaOutputPath, metaContent);
-console.log('_meta.js has been generated successfully.');
+// Generate main _meta.js
+const mainMetaContent = generateMeta(akiraConfig.mapping);
+const mainMetaPath = path.join(pagesPath, '_meta.js');
+fs.writeFileSync(mainMetaPath, mainMetaContent);
+console.log('Main _meta.js has been generated successfully.');
+
+// Generate _meta.js for subpages
+createMetaFiles(akiraConfig.mapping, pagesPath);

@@ -1,5 +1,43 @@
 {
-    "sidebar": {
-      "index": "Akira Test"
+    "logo": {
+      "text": "Akira Docs"
+    },
+    "project": {
+      "link": "https://github.com/Cloud-Code-AI/akiradocs-starter"
+    },
+    "chat": {
+      "link": "https://discord.com/invite/zvYZukgeH2"
+    },
+    "docsRepositoryBase": "https://github.com/Cloud-Code-AI/akiradocs-starter",
+    "footer": {
+      "text": "© 2024 Cloud Code AI"
+    },
+    "nextThemes": {
+      "defaultTheme": "system",
+      "storageKey": "theme"
+    },
+    "search": {
+      "placeholder": "Search documentation..."
+    },
+    "toc": {
+      "float": true,
+      "title": "On This Page"
+    },
+    "editLink": {
+      "disabled": true,
+      "text": "Edit this page on GitHub"
+    },
+    "feedback": {
+      "content": "Question? Give us feedback →",
+      "labels": "feedback"
+    },
+    "head": {
+      "title": "Your Site Title",
+      "description": "Your site description",
+      "favicon": "/favicon.ico"
+    },
+    "darkMode": true,
+    "mapping": {
+      "index": "Introduction"
     }
-}
+  }
